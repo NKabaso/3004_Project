@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 #include <map>
 #include <iterator>
+#include <ctime>
 
 using namespace std;
 
@@ -17,6 +17,7 @@ class CatalogueItem{
         const string& status;
         const string& condtion;
         const string& format;
+        const string dueDate; // consider turning into date type
         int quantity;
 
     public:
@@ -28,8 +29,9 @@ class CatalogueItem{
         const string& getAuthor();
         const string& getStatus();
         const string& getFormat();
-        const string& getCondtion();
+        const string& getCondition();
         int getQuantity();
+        const string& getDueDate();
 
         void reduceQuantity(int amount);
         void increaseQuantity(int amount);
