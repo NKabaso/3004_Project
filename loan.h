@@ -3,14 +3,20 @@
 
 #include "catalogueitem.h"
 #include <string>
+#include <ctime>
 
 class Loan {
 
 public:
-    Loan(const CatalogueItem& item);
+    Loan(const CatalogueItem& item, tm date);
+
+    int getRemainingDays() const;
+    CatalogueItem getItem() const;
+    tm getDueDate() ;
+
 
 private:
-    int remainingDays;
+    tm dueDate;
     CatalogueItem item;
 };
 
