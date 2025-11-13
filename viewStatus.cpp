@@ -32,10 +32,15 @@ void viewStatus::on_backButton_clicked()
 }
 
 void viewStatus::loadData(){
+    char time[50];
+    tm temp;
     for (Loan loan: status.getLoans() ) {
-        ui->loansTitleList->addItem(loan.getTitle());
-        ui->dueDateList->addItem(loan.getDueDate());
-        ui->daysRemList->addItem(loan.getDaysRemaining());
+        temp = loan.getDueDate();
+        strftime(time,50, "%m/%d/%y", &temp);
+        //Converts values to Qstrings  then adds  them to the correcct lists
+        ui->loansTitleList->addItem(QString::fromStdString(loan.getItem().getTitle()));
+        ui->dueDateList->addItem(QString::fromStdString(time));
+        ui->daysRemList->addItem(QString::fromStdString(to_string(loan.getRemainingDays())) );
     }
 
     map<CatalogueItem, int> holds = status.getHoldList();
